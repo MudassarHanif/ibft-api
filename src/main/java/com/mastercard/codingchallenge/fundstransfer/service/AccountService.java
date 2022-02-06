@@ -80,6 +80,7 @@ public class AccountService {
     List<LedgerEntity> ledgerEntityList = ledgerRepository.findLedgerEntitiesByAccountEntity_AccountNumber(accountNumber);
 
     return ledgerEntityList.stream()
+        .limit(20)
         .map(ledgerEntity -> LedgerModel.builder()
             .accountNumber(ledgerEntity.getAccountEntity().getAccountNumber())
             .currencyEnum(ledgerEntity.getAccountEntity().getCurrency())
