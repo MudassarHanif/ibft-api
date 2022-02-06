@@ -51,12 +51,6 @@ public class AccountIntegrationTest {
 
     String fundsTransferRequestJson = "{\"sender-account-id\":\"111\",\"receiver-account-id\":\"222\",\"transaction-amount\":\"10\"}";
 
-    // Send course as body to /students/Student1/courses
-    RequestBuilder requestBuilder = MockMvcRequestBuilders
-        .post("/students/Student1/courses")
-        .accept(MediaType.APPLICATION_JSON).content(fundsTransferRequestJson)
-        .contentType(MediaType.APPLICATION_JSON);
-
     mvc.perform(post("/accounts/transferfunds").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).content(fundsTransferRequestJson))
         .andExpect(status().isAccepted());
 
